@@ -21,11 +21,11 @@ def index(request):
         #     'keys': '对对对'
         # }
         'person':
-            [
+            (
                 '鲁班七号',
                 '程咬金',
                 '大猪头'
-            ]
+            )
     }
     return render(request, 'index.html', context=context)
 
