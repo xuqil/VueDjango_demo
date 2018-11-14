@@ -11,9 +11,14 @@ class Person(object):
 
 
 def index(request):
-    p = Person("花红")
+    # p = Person("花红")
+    # context = {
+    #     'person': p
+    # }
     context = {
-        'person': p
+        'person': {
+            'username': '哈哈哈'
+        }
     }
     return render(request, 'index.html', context=context)
 
