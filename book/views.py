@@ -17,7 +17,8 @@ def index(request):
     # }
     context = {
         'person': {
-            'username': '哈哈哈'
+            'username': '哈哈哈',
+            'keys': '对对对'
         }
     }
     return render(request, 'index.html', context=context)
