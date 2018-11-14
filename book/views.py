@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template.loader import render_to_string
 
 # Create your views here.
 
 
 def index(request):
-    return HttpResponse("你好")
+    html = render_to_string("index.html")
+    return HttpResponse(html)
 
 
 def book(request, book_id, book_idd):
