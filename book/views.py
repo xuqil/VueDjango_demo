@@ -6,8 +6,8 @@ from django.template.loader import render_to_string
 
 
 def index(request):
-    html = render_to_string("index.html")
-    return HttpResponse(html)
+    # html = render_to_string("index.html")
+    return render(request, 'index.html')
 
 
 def book(request, book_id, book_idd):
