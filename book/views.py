@@ -5,9 +5,17 @@ from django.template.loader import render_to_string
 # Create your views here.
 
 
+class Person(object):
+    def __init__(self, username):
+        self.username = username
+
+
 def index(request):
-    # html = render_to_string("index.html")
-    return render(request, 'index.html')
+    p = Person("花红")
+    context = {
+        'person': p
+    }
+    return render(request, 'index.html', context=context)
 
 
 def book(request, book_id, book_idd):
