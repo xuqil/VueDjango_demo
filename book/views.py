@@ -16,10 +16,16 @@ def index(request):
     #     'person': p
     # }
     context = {
-        'person': {
-            'username': '哈哈哈',
-            'keys': '对对对'
-        }
+        # 'person': {
+        #     'username': '哈哈哈',
+        #     'keys': '对对对'
+        # }
+        'person':
+            [
+                '鲁班七号',
+                '程咬金',
+                '大猪头'
+            ]
     }
     return render(request, 'index.html', context=context)
 
