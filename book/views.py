@@ -20,7 +20,7 @@ def index(request):
         #     'username': '哈哈哈',
         #     'keys': '对对对'
         # }
-        'person':
+        'books':
             (
                 '鲁班七号',
                 '程咬金',

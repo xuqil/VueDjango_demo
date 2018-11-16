@@ -7,5 +7,10 @@
 <body>
 首页
 <p>{{ person.0 }}{{ person.1 }}</p>
+<ul>
+{% for book in books reversed%}
+    <li>{{ book }}</li>
+    {% endfor %}
+</ul>
 </body>
 </html>
