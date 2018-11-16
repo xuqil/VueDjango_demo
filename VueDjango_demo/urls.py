@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from book import urls
+from front import urls as fr_ur
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(urls, namespace='book')),
+    path('front/', include(fr_ur, namespace='front'))
 
 ]
