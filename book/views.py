@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-
-# Create your views here.
+from .models import Book
 
 
 class Person(object):
