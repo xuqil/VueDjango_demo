@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from .models import Student, Course, Teacher, Score
-from django.db.models import Avg, Count, Sum
+from django.db.models import Avg, Count, Sum, F
 
 
 def check_avg_score(request):
@@ -51,4 +51,14 @@ def check_student_score_last(request):
     students = Student.objects.exclude(score__number__gt=60).values('id', 'name')
     for s in students:
         print(s)
+    return HttpResponse("OK")
+
+
+def check_student_all_no_done(request):
+    students = Student.objects.annotate(num=Count(F('score__course'))).filter(num__lt=Course.objects.count()).values(
+        'id', 'name'
+    )
+    for s in students:
+        print(s)
+    print(Course.objects.count())
     return HttpResponse("OK")
