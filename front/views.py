@@ -27,7 +27,7 @@ def check_teachers_number(request):
 
 def check_student_no_done(request):
     students = Student.objects.exclude(score__course__teacher__name="李老师").values("id", "name")
-    for student in  students:
+    for student in students:
         print(student)
     return HttpResponse("ok")
 
@@ -37,3 +37,11 @@ def check_student_done(request):
     for student in students:
         print(student)
     return HttpResponse("OK")
+
+
+def check_student_huang(request):
+    course = Course.objects.filter(teacher__name="黄老师")
+    students = Student.objects.filter(score__course__in=course).distinct().values('id', 'name')
+    for s in students:
+        print(s)
+    return HttpResponse("ok")
