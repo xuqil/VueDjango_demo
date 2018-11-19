@@ -10,4 +10,5 @@ urlpatterns = [
     path('check_student_no_done/', views.check_student_no_done, name='check_student_no_done'),
     path('check_student_done/', views.check_student_done, name='check_student_done'),
     path('check_student_huang/', views.check_student_huang, name='check_student_huang'),
+    path('check_student_score_last/', views.check_student_score_last, name='check_student_score_last'),
 ]

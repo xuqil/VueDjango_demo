@@ -45,3 +45,10 @@ def check_student_huang(request):
     for s in students:
         print(s)
     return HttpResponse("ok")
+
+
+def check_student_score_last(request):
+    students = Student.objects.exclude(score__number__gt=60).values('id', 'name')
+    for s in students:
+        print(s)
+    return HttpResponse("OK")
