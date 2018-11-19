@@ -1,19 +1,26 @@
-from django.shortcuts import render
-from django.db import connection
+from django.shortcuts import render, HttpResponse
+from .models import Student, Course, Teacher, Score
+from django.db.models import Avg
 
 
-def get_cursor():
-    return connection.cursour
+def check_avg_score(request):
+    avg_score = Student.objects.annotate(avg=Avg("score__number")).filter(avg__gte=60).values("id", "avg")
+    for row in avg_score:
+        print(row)
+    return HttpResponse("OK")
 
 
-def index(request):
-    return render(request, 'index.html')
+def check_students_detail(request):
+    pass
 
 
-def add_book(request):
-    return render(request, 'add_book.html')
+def check_teachers_number(request):
+    pass
 
 
-def book_detail(request):
-    return render(request, 'book_detail.html')
+def check_student_no_done(request):
+    pass
 
+
+def check_student_done(request):
+    pass
