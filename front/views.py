@@ -20,13 +20,16 @@ def check_students_detail(request):
 
 
 def check_teachers_number(request):
-    teachers = Teacher.objects.all().filter(name__startswith="李").count()
-    print(teachers)
+    teachers_number = Teacher.objects.all().filter(name__startswith="李").count()
+    print(teachers_number)
     return HttpResponse("OK")
 
 
 def check_student_no_done(request):
-    pass
+    students = Student.objects.exclude(score__course__teacher__name="李老师").values("id", "name")
+    for student in  students:
+        print(student)
+    return HttpResponse("ok")
 
 
 def check_student_done(request):
