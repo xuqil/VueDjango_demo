@@ -20,7 +20,9 @@ def check_students_detail(request):
 
 
 def check_teachers_number(request):
-    pass
+    teachers = Teacher.objects.all().filter(name__startswith="李").count()
+    print(teachers)
+    return HttpResponse("OK")
 
 
 def check_student_no_done(request):
