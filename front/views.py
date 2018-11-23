@@ -87,3 +87,10 @@ def check_course_avg(request):
     return HttpResponse("Ok")
 
 
+def check_sex_total(request):
+    sex1_total = Student.objects.filter(gender=1).count()
+    sex2_total = Student.objects.filter(gender=2).count()
+    print("男生:"+str(sex1_total), "女生:"+str(sex2_total))
+    return HttpResponse("Ok")
+
+
