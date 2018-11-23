@@ -79,3 +79,11 @@ def check_all_scores(request):
         print(course)
     return HttpResponse("OK")
 
+
+def check_course_avg(request):
+    course_avg = Course.objects.annotate(avg=Avg("score__number")).values('name', 'avg').order_by("avg")
+    for course in course_avg:
+        print(course)
+    return HttpResponse("Ok")
+
+
