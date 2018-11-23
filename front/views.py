@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from .models import Student, Course, Teacher, Score
-from django.db.models import Avg, Count, Sum, F
+from django.db.models import Avg, Count, Sum, F, Max, Min
 
 
 def check_avg_score(request):
@@ -68,5 +68,14 @@ def check_score_avg(request):
     students = Student.objects.annotate(avg=Avg("score__number")).values('name', 'avg').distinct().order_by("-avg")
     for student in students:
         print(student)
+    return HttpResponse("OK")
+
+
+def check_all_scores(request):
+    courses = Course.objects.annotate(min=Min("score__number"), max=Max("score__number")).values(
+        'pk', 'name', 'min', 'max'
+    )
+    for course in courses:
+        print(course)
     return HttpResponse("OK")
 
