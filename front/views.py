@@ -62,3 +62,11 @@ def check_student_all_no_done(request):
         print(s)
     print(Course.objects.count())
     return HttpResponse("OK")
+
+
+def check_score_avg(request):
+    students = Student.objects.annotate(avg=Avg("score__number")).values('name', 'avg').distinct().order_by("-avg")
+    for student in students:
+        print(student)
+    return HttpResponse("OK")
+
