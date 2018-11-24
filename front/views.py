@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from .models import Student, Course, Teacher, Score
-from django.db.models import Avg, Count, Sum, F, Max, Min
+from django.db.models import Avg, Count, Sum, F, Max, Min, Q
 
 
 def check_avg_score(request):
@@ -98,3 +98,12 @@ def add_score(request):
     results = Score.objects.filter(course__teacher__name="黄老师").update(number=F("number")+5)
     print(results)
     return HttpResponse('ok')
+
+
+def check_fail_students(request):
+    # score_number = Score
+    students = Student.objects.annotate(bad_count=Count("score__number", filter=Q(score__number__lt=60))).filter(
+        bad_count__gte=2).values('id', 'name', 'bad_count')
+    for student in students:
+        print(student)
+    return HttpResponse("OK")

@@ -17,4 +17,5 @@ urlpatterns = [
     path('check_course_avg/', views.check_course_avg, name='check_course_avg'),
     path('check_sex_total/', views.check_sex_total, name='check_sex_total'),
     path('add_score/', views.add_score, name='add_score'),
+    path('check_fail_students/', views.check_fail_students, name='check_fail_students'),
 ]
