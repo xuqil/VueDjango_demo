@@ -107,3 +107,10 @@ def check_fail_students(request):
     for student in students:
         print(student)
     return HttpResponse("OK")
+
+
+def check_number(request):
+    number = Course.objects.annotate(count=Count("score__student")).values('id', 'name', 'count')
+    for n in number:
+        print(n)
+    return HttpResponse("ok")
