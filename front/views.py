@@ -94,3 +94,7 @@ def check_sex_total(request):
     return HttpResponse("Ok")
 
 
+def add_score(request):
+    results = Score.objects.filter(course__teacher__name="黄老师").update(number=F("number")+5)
+    print(results)
+    return HttpResponse('ok')
