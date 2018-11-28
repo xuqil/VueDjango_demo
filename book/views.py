@@ -25,8 +25,9 @@ class IndexView(View):
             print(reply)
             return HttpResponse("ok")
         else:
-            print(form.errors)
+            print(form.errors.get_json_date())
             return HttpResponse("error")
+
 
 class Person(object):
     def __init__(self, username):
