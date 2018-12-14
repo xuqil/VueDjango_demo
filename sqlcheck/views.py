@@ -89,7 +89,13 @@ def check_score_avg(request):
 
 
 def check_all_scores(request):
-    pass
+    students = session.query(Courses.course_id,
+                             Courses.name, func.max(Scores.number).label('max'),
+                             func.min(Scores.number).label('min'))\
+        .join(Scores, Courses.course_id == Scores.course_id)\
+        .group_by(Courses.course_id)
+    for student in students:
+        print(student)
     return HttpResponse("OK")
 
 
