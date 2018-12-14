@@ -71,7 +71,11 @@ def check_student_score_last(request):
 
 
 def check_student_all_no_done(request):
-    pass
+    all_num = session.query(Courses).count()
+    students = session.query(Students.student_id, Students.name).join(Scores, Students.student_id == Scores.student_id)\
+        .group_by(Students.student_id).having(func.count(Scores.course_id) < all_num).all()
+    for student in students:
+        print(student)
     return HttpResponse("OK")
 
 
