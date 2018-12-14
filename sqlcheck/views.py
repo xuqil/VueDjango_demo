@@ -63,7 +63,10 @@ def check_student_huang(request):
 
 
 def check_student_score_last(request):
-    pass
+    s = session.query(Scores.student_id).filter(Scores.number > 60.0)
+    students = session.query(Students.student_id, Students.name).filter(~Students.student_id.in_(s))
+    for student in students:
+        print(student)
     return HttpResponse("OK")
 
 
