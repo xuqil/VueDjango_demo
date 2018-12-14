@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from sqlalchemy.ext.declarative import declarative_base
 from .models import Students, Scores, Courses, Teachers
-from sqlalchemy import create_engine, func, and_, or_
+from sqlalchemy import create_engine, func, and_, or_, desc
 from sqlalchemy.orm import sessionmaker
 
 engine = create_engine('mysql+mysqlconnector://root:19218@127.0.0.1:3306/django_db1', encoding='utf8')
@@ -80,7 +80,11 @@ def check_student_all_no_done(request):
 
 
 def check_score_avg(request):
-    pass
+    students = session.query(Students.name, func.avg(Scores.number).label('avg')). \
+            join(Scores, Students.student_id == Scores.student_id)\
+            .group_by(Students.student_id).order_by(desc('avg')).all()
+    for student in students:
+        print(student)
     return HttpResponse("OK")
 
 
