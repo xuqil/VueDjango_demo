@@ -1,8 +1,20 @@
 from django.shortcuts import render, HttpResponse
+from sqlalchemy.ext.declarative import declarative_base
+from .models import Students, Scores, Courses, Teachers
+from sqlalchemy import create_engine, func
+from sqlalchemy.orm import sessionmaker
+
+engine = create_engine('mysql+mysqlconnector://root:19218@127.0.0.1:3306/django_db1', encoding='utf8')
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
 
 
 def check_avg_score(request):
-    pass
+    students = session.query(Students.student_id, func.avg(Scores.number).label('avg')).\
+        join(Scores, Students.student_id == Scores.student_id).\
+        group_by(Students.student_id).having(func.avg(Scores.number) > 60)
+    for student in students:
+        print(student)
     return HttpResponse("OK")
 
 

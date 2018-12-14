@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from book import urls
 from front import urls as fr_ur
+from sqlcheck import urls as sql_ur
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(urls, namespace='book')),
-    path('front/', include(fr_ur, namespace='front'))
+    path('front/', include(fr_ur, namespace='front')),
+    path('sqlcheck/', include(sql_ur, namespace='sqlcheck')),
 
 ]
