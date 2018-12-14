@@ -19,7 +19,13 @@ def check_avg_score(request):
 
 
 def check_students_detail(request):
-    pass
+    students = session.query(Students.student_id, Students.name,
+                             func.count(Courses.course_id).label('num'),
+                             func.sum(Scores.number).label('sum'))\
+        .join(Scores, Students.student_id == Scores.student_id)\
+        .join(Courses, Scores.course_id == Courses.course_id).group_by(Students.student_id)
+    for student in students:
+        print(student)
     return HttpResponse("OK")
 
 
