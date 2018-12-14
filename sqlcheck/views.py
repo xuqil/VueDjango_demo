@@ -54,7 +54,11 @@ def check_student_done(request):
 
 
 def check_student_huang(request):
-    pass
+    students = session.query(Scores.student_id).join(Courses, Scores.course_id == Courses.course_id)\
+        .join(Teachers, Courses.teacher_id == Teachers.teacher_id).filter(Teachers.name == '黄老师')
+    students = session.query(Students.student_id, Students.name).filter(Students.student_id.in_(students))
+    for student in students:
+        print(student)
     return HttpResponse("ok")
 
 
