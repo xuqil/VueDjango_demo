@@ -30,7 +30,8 @@ def check_students_detail(request):
 
 
 def check_teachers_number(request):
-    pass
+    teacher_number = session.query(Teachers).filter(Teachers.name.like('李%')).count()
+    print(teacher_number)
     return HttpResponse("OK")
 
 
