@@ -34,6 +34,7 @@ def check_student_no_done(request):
 
 def check_student_done(request):
     students = Student.objects.filter(score__course__id__in=[1, 2]).distinct().values('id', 'name')
+    print(students.query)
     for student in students:
         print(student)
     return HttpResponse("OK")

@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from sqlalchemy.ext.declarative import declarative_base
 from .models import Students, Scores, Courses, Teachers
-from sqlalchemy import create_engine, func
+from sqlalchemy import create_engine, func, and_, or_
 from sqlalchemy.orm import sessionmaker
 
 engine = create_engine('mysql+mysqlconnector://root:19218@127.0.0.1:3306/django_db1', encoding='utf8')
@@ -45,7 +45,11 @@ def check_student_no_done(request):
 
 
 def check_student_done(request):
-    pass
+    students = session.query(Students.student_id, Students.name).filter(Scores.student_id == Students.student_id) \
+            .filter(or_(Scores.course_id == 1, Scores.course_id == 2))
+    print(students)
+    for student in students:
+        print(student)
     return HttpResponse("OK")
 
 
