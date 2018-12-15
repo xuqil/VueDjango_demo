@@ -129,7 +129,13 @@ def add_score(request):
 
 
 def check_fail_students(request):
-    pass
+    num = session.query(Students.student_id, Students.name,
+                        func.count(Scores.course_id).label('num'))\
+        .join(Scores, Students.student_id == Scores.student_id).filter(Scores.number < 60)\
+        .group_by(Students.student_id).having(func.count(Scores.number < 60) >= 2)
+    print(num)
+    for i in num:
+        print(i)
     return HttpResponse("OK")
 
 
