@@ -140,5 +140,9 @@ def check_fail_students(request):
 
 
 def check_number(request):
-    pass
+    num = session.query(Courses.name, func.count(Scores.student_id).label('num')) \
+        .join(Scores, Courses.course_id == Scores.course_id).group_by(Courses.course_id) \
+        .order_by('num')
+    for i in num:
+        print(i)
     return HttpResponse("ok")
