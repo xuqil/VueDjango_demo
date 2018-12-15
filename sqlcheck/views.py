@@ -45,7 +45,7 @@ def check_student_no_done(request):
 
 def check_student_done(request):
     students = session.query(Students.student_id, Students.name).filter(Scores.student_id == Students.student_id) \
-            .filter(or_(Scores.course_id == 1, Scores.course_id == 2))
+            .filter(Scores.course_id.in_([1, 2])).distinct()
     print(students)
     for student in students:
         print(student)
