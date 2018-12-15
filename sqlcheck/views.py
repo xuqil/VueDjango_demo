@@ -109,15 +109,15 @@ def check_course_avg(request):
 
 
 def check_sex_total(request):
-    pass
-    return HttpResponse("Ok")
-
-
-def add_score(request):
     man = session.query(Students).filter(Students.gender == 1).count()
     print('男生人数：' + str(man))
     woman = session.query(Students).filter(Students.gender == 2).count()
     print('女生人数：' + str(woman))
+    return HttpResponse("Ok")
+
+
+def add_score(request):
+    pass
     return HttpResponse('ok')
 
 
