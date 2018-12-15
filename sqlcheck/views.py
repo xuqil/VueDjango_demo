@@ -1,7 +1,6 @@
-from django.shortcuts import render, HttpResponse
-from sqlalchemy.ext.declarative import declarative_base
+from django.shortcuts import HttpResponse
 from .models import Students, Scores, Courses, Teachers
-from sqlalchemy import create_engine, func, and_, or_, desc
+from sqlalchemy import create_engine, func, or_, desc
 from sqlalchemy.orm import sessionmaker
 
 engine = create_engine('mysql+mysqlconnector://root:19218@127.0.0.1:3306/django_db1', encoding='utf8')
