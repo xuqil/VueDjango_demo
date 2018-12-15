@@ -114,7 +114,10 @@ def check_sex_total(request):
 
 
 def add_score(request):
-    pass
+    man = session.query(Students).filter(Students.gender == 1).count()
+    print('男生人数：' + str(man))
+    woman = session.query(Students).filter(Students.gender == 2).count()
+    print('女生人数：' + str(woman))
     return HttpResponse('ok')
 
 
