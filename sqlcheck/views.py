@@ -117,7 +117,14 @@ def check_sex_total(request):
 
 
 def add_score(request):
-    pass
+    teacher = session.query(Scores) \
+            .join(Courses, Scores.course_id == Courses.course_id)\
+            .join(Teachers, Courses.teacher_id == Teachers.teacher_id).filter(Teachers.name == '黄老师')
+    for i in teacher:
+        i.number += 5
+        print(i.number)
+        session.query(Scores).filter(Scores.scores_id == i.scores_id).update({'number': i.number})
+    session.commit()
     return HttpResponse('ok')
 
 
