@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'book.apps.BookConfig',
     'front',
     'sqlcheck',
+    'framework_app',
 ]
 
 MIDDLEWARE = [
