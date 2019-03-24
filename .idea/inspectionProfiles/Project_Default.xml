@@ -4,7 +4,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="26">
+          <list size="56">
             <item index="0" class="java.lang.String" itemvalue="traitlets" />
             <item index="1" class="java.lang.String" itemvalue="decorator" />
             <item index="2" class="java.lang.String" itemvalue="parso" />
@@ -31,6 +31,36 @@
             <item index="23" class="java.lang.String" itemvalue="Pillow" />
             <item index="24" class="java.lang.String" itemvalue="six" />
             <item index="25" class="java.lang.String" itemvalue="Django" />
+            <item index="26" class="java.lang.String" itemvalue="mysqlclient" />
+            <item index="27" class="java.lang.String" itemvalue="PyJWT" />
+            <item index="28" class="java.lang.String" itemvalue="diff-match-patch" />
+            <item index="29" class="java.lang.String" itemvalue="PyYAML" />
+            <item index="30" class="java.lang.String" itemvalue="httplib2" />
+            <item index="31" class="java.lang.String" itemvalue="MarkupSafe" />
+            <item index="32" class="java.lang.String" itemvalue="Jinja2" />
+            <item index="33" class="java.lang.String" itemvalue="coreschema" />
+            <item index="34" class="java.lang.String" itemvalue="jdcal" />
+            <item index="35" class="java.lang.String" itemvalue="XlsxWriter" />
+            <item index="36" class="java.lang.String" itemvalue="djangorestframework" />
+            <item index="37" class="java.lang.String" itemvalue="Markdown" />
+            <item index="38" class="java.lang.String" itemvalue="xlrd" />
+            <item index="39" class="java.lang.String" itemvalue="django-formtools" />
+            <item index="40" class="java.lang.String" itemvalue="uritemplate" />
+            <item index="41" class="java.lang.String" itemvalue="django-crispy-forms" />
+            <item index="42" class="java.lang.String" itemvalue="djangorestframework-jwt" />
+            <item index="43" class="java.lang.String" itemvalue="tablib" />
+            <item index="44" class="java.lang.String" itemvalue="django-import-export" />
+            <item index="45" class="java.lang.String" itemvalue="xlwt" />
+            <item index="46" class="java.lang.String" itemvalue="et-xmlfile" />
+            <item index="47" class="java.lang.String" itemvalue="django-reversion" />
+            <item index="48" class="java.lang.String" itemvalue="odfpy" />
+            <item index="49" class="java.lang.String" itemvalue="coreapi" />
+            <item index="50" class="java.lang.String" itemvalue="django-filter" />
+            <item index="51" class="java.lang.String" itemvalue="django-guardian" />
+            <item index="52" class="java.lang.String" itemvalue="future" />
+            <item index="53" class="java.lang.String" itemvalue="itypes" />
+            <item index="54" class="java.lang.String" itemvalue="unicodecsv" />
+            <item index="55" class="java.lang.String" itemvalue="openpyxl" />
           </list>
         </value>
       </option>

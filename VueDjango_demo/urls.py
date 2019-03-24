@@ -18,11 +18,22 @@ from django.urls import path, include
 from book import urls
 from front import urls as fr_ur
 from sqlcheck import urls as sql_ur
+from rest_framework import routers
+from framework_app import urls as rest_url
+from framework_app import views
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'group', views.GroupViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(urls, namespace='book')),
     path('front/', include(fr_ur, namespace='front')),
     path('sqlcheck/', include(sql_ur, namespace='sqlcheck')),
+
+    # framework-api
+    path('api-rest/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 ]

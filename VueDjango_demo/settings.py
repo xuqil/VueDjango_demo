@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'front',
     'sqlcheck',
     'framework_app',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
